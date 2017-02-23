@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <bean id="productService" class="org.mannayakasha.service.ProductService" abstract="true"/>
+    <bean id="orderService" class="org.mannayakasha.service.OrderService" abstract="true"/>
+    <bean id="accountService" class="org.mannayakasha.service.AccountService" abstract="true"/>
+
+    <bean id="serviceFactory"
+          class="org.springframework.beans.factory.config.ServiceLocatorFactoryBean">
+        <property name="serviceLocatorInterface" value="org.mannayakasha.service.ServiceFactory"/>
+    </bean>
+
+    <bean id="mainController" class="org.mannayakasha.controller.MainController">
+        <property name="serviceFactory" ref="serviceFactory"/>
+    </bean>
+
+</beans>-->

@@ -1,0 +1,73 @@
+CREATE TABLE Accounts (
+  User_Name VARCHAR(20) NOT NULL,
+  Active    BIT         NOT NULL,
+  Password  VARCHAR(20) NOT NULL,
+  User_Role VARCHAR(20) NOT NULL,
+  PRIMARY KEY (User_Name)
+)
+  ENGINE = INNODB
+  DEFAULT CHARACTER SET utf8;
+
+CREATE TABLE Order_Details (
+  ID         VARCHAR(50)      NOT NULL,
+  Amount     DOUBLE PRECISION NOT NULL,
+  Price      DOUBLE PRECISION NOT NULL,
+  Quanity    INTEGER          NOT NULL,
+  ORDER_ID   VARCHAR(50)      NOT NULL,
+  PRODUCT_ID VARCHAR(20)      NOT NULL,
+  PRIMARY KEY (ID)
+)
+  ENGINE = INNODB
+  DEFAULT CHARACTER SET utf8;
+
+CREATE TABLE Orders (
+  ID               VARCHAR(50)      NOT NULL,
+  Amount           DOUBLE PRECISION NOT NULL,
+  Customer_Address VARCHAR(255)     NOT NULL,
+  Customer_Email   VARCHAR(128)     NOT NULL,
+  Customer_Name    VARCHAR(255)     NOT NULL,
+  Customer_Phone   VARCHAR(128)     NOT NULL,
+  Order_Date       DATETIME         NOT NULL,
+  Order_Num        INTEGER          NOT NULL,
+  PRIMARY KEY (ID)
+)
+  ENGINE = INNODB
+  DEFAULT CHARACTER SET utf8;
+
+CREATE TABLE Products (
+  Code        VARCHAR(20)      NOT NULL,
+  Create_Date DATETIME         NOT NULL,
+  Image       LONGBLOB,
+  Name        VARCHAR(255)     NOT NULL,
+  Price       DOUBLE PRECISION NOT NULL,
+  Novelty     BIT              NOT NULL,
+  CATEGORY_ID VARCHAR(50)      NOT NULL,
+  PRIMARY KEY (Code)
+)
+  ENGINE = INNODB
+  DEFAULT CHARACTER SET utf8;
+
+CREATE TABLE Categories (
+  Name VARCHAR(50) NOT NULL,
+  PRIMARY KEY (Name)
+)
+  ENGINE = INNODB
+  DEFAULT CHARACTER SET utf8;
+
+ALTER TABLE Products
+  ADD CONSTRAINT PRODUCT_CATEG_FK
+FOREIGN KEY (CATEGORY_ID)
+REFERENCES Categories (Name);
+
+ALTER TABLE Orders
+  ADD CONSTRAINT UK_sxhpvsj665kmi4f7jdu9d2791 UNIQUE (Order_Num);
+
+ALTER TABLE Order_Details
+  ADD CONSTRAINT ORDER_DETAIL_ORD_FK
+FOREIGN KEY (ORDER_ID)
+REFERENCES Orders (ID);
+
+ALTER TABLE Order_Details
+  ADD CONSTRAINT ORDER_DETAIL_PROD_FK
+FOREIGN KEY (PRODUCT_ID)
+REFERENCES Products (Code);

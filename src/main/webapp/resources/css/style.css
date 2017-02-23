@@ -1,0 +1,17 @@
+.invisible-at-first {
+    display: none;
+}
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+    background: #39b54a;
+    color: #fff;
+    width: 100%;
+}
+
+.error-message {
+    color: red;
+}
