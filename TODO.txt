@@ -1,9 +1,7 @@
-Password encryption. bCryptPasswordEncoder
 Localization
 Registration
 ServiceFactory
 Add methods in Service and Dao
-
 
 Rework authentication
 

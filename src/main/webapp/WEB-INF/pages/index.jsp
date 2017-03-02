@@ -32,10 +32,10 @@
     </div>
     <form method="POST" modelAttribute="searchForm" action="${pageContext.request.contextPath}/">
                     <span class="form-group">
-                        <input type="text" placeholder="Product name" class="form-control" name="name"
-                               value="${cartLineInfo.productInfo.name}"/>
+                        <input size="5" type="text" placeholder="Product name" class="w3-input w3-border form-control" name="name" value="${cartLineInfo.productInfo.name}"/>
                     </span>
-        <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+        <button class="w3-btn w3-white w3-border" type="submit"><i class="fa fa-search"></i></button>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
     <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
         <a href="${pageContext.request.contextPath}/?category=shirts">Shirts</a>
@@ -64,24 +64,32 @@
     <header class="w3-container w3-xlarge">
         <p class="w3-left">Jeans</p>
         <p class="w3-right">
-            <c:if test="${pageContext.request.userPrincipal.name != null}">
-                <span class="navbar-brand">
-                    Hello, <a
-                        href="${pageContext.request.contextPath}/accountInfo">${pageContext.request.userPrincipal.name}</a>
-                    <a href="${pageContext.request.contextPath}/logout">
-                        <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+            <span class="navbar-brand">
+                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                    Hello, <a href="${pageContext.request.contextPath}/accountInfo"><button class="w3-btn w3-white w3-border">${pageContext.request.userPrincipal.name}</button></a>
+                    <a onclick="document.forms['logoutForm'].submit()">
+                        <button class="w3-btn w3-white w3-border"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
                     </a>
-                </span>
-            </c:if>
-            <c:if test="${pageContext.request.userPrincipal.name == null}">
-                <a href="${pageContext.request.contextPath}/login">Log in</a>
-                <a href="${pageContext.request.contextPath}/login">Sign in</a>
-            </c:if>
-            <a href="${pageContext.request.contextPath}/shoppingCart">
-                <i class="fa fa-shopping-cart w3-margin-right">
-                    <span class="w3-badge w3-right w3-small w3-green">${cartForm.cartLines.size()}</span>
-                </i>
-            </a>
+                </c:if>
+                <c:if test="${pageContext.request.userPrincipal.name == null}">
+                    <a style="text-decoration: none" href="${pageContext.request.contextPath}/login">
+                        <button class="w3-btn w3-white w3-border">Log in</button>
+                    </a>
+                    <a style="text-decoration: none" href="${pageContext.request.contextPath}/login">
+                        <button class="w3-btn w3-white w3-border">Sign in</button>
+                    </a>
+                </c:if>
+                <a href="${pageContext.request.contextPath}/shoppingCart">
+                    <i class="fa fa-shopping-cart w3-margin-right">
+                        <span class="w3-badge w3-right w3-small w3-green">${cartForm.cartLines.size()}</span>
+                    </i>
+                </a>
+            </span>
+
+            <form id="logoutForm" method="POST" action="${contextPath}/logout">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+
         </p>
     </header>
 

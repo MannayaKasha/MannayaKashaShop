@@ -101,29 +101,8 @@ public class MainController {
 
     }
 
-    /*@RequestMapping(value="/testlocale", method = RequestMethod.GET)
-    public ModelAndView user(Locale locale){
-        return new ModelAndView("testlocale");
-    }*/
-
     @Autowired
     private MessageSource messageSource;
-
-    @RequestMapping(value = "/testlocale", method = RequestMethod.GET)
-    public String index(Locale locale, Model model){
-
-        // add parametrized message from controller
-        String welcome = messageSource.getMessage("user.title", new Object[]{"John Doe"}, locale);
-        model.addAttribute("message", welcome);
-
-        // obtain locale from LocaleContextHolder
-        Locale currentLocale = LocaleContextHolder.getLocale();
-        model.addAttribute("locale", currentLocale);
-
-        model.addAttribute("startMeeting", "10:30");
-
-        return "testlocale";
-    }
 
     //@RequestMapping(value = "/", method = RequestMethod.GET)
     @RequestMapping(value = "/")

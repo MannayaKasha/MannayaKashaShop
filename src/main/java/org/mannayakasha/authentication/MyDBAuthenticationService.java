@@ -4,12 +4,16 @@ import org.mannayakasha.entity.Account;
 import org.mannayakasha.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,7 +26,7 @@ import java.util.List;
  * @version 1.0
  */
 
-@Service
+@Service("myDBAuthenticationService")
 public class MyDBAuthenticationService implements UserDetailsService {
 
     @Resource(name = "accountService")
@@ -33,6 +37,10 @@ public class MyDBAuthenticationService implements UserDetailsService {
     public void setAccountService(AccountService accountService) {
         this.accountService = accountService;
     }
+
+    @Autowired
+    @Qualifier("bCryptPasswordEncoder")
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

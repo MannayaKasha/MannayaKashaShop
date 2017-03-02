@@ -22,26 +22,27 @@
          </div>
        </c:if>
 
-<form:form modelAttribute="productForm" method="POST" enctype="multipart/form-data">
+<form:form modelAttribute="productForm" method="POST"> <%--enctype="multipart/form-data"--%>
     <div class="container text-center">
         <h3 style="margin-top: 70px;">Manage Product</h3>
         <hr>
-            <%--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-            <%--<input type="hidden" name="id" value="${productForm.code}"/>--%>
         <div class="form-group">
             <label class="control-label col-md-3">Code</label>
             <div class="col-md-7">
                                   <c:if test="${not empty productForm.code}">
-                                       <form:hidden path="code"/>
+                                       <hidden path="code"/>
                                        ${productForm.code}
                                   </c:if>
                                   <c:if test="${empty productForm.code}">
-                                       <form:input path="code"/>
-                                       <form:hidden path="newProduct"/>
+                                       <%--<form:input path="code"/>--%>
+                <input type="text" class="form-control" name="code" value="${productForm.code}"/>
+                                       <hidden path="newProduct"/>
                                   </c:if>
                 <form:errors path="code" class="error-message"/>
             </div>
         </div>
+        <br>
+        <br>
         <br>
         <br>
         <div class="form-group">
@@ -51,6 +52,7 @@
                 <form:errors path="name" class="error-message"/>
             </div>
         </div>
+        <br>
         <br>
         <br>
         <div class="form-group">
@@ -98,7 +100,7 @@
         <div class="form-group">
             <label class="control-label col-md-3">Upload Image</label>
             <div class="col-md-7">
-                <form:input type="file" path="fileData"/>
+                <input type="file" path="fileData"/>
             </div>
         </div>
         <div class="form-group">
@@ -106,6 +108,7 @@
                 <br>
                 <input type="submit" class="btn btn-success" value="Submit"/>
                 <input type="reset" class="btn btn-info" value="Reset"/>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </div>
         </div>
     </div>

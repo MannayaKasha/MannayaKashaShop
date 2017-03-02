@@ -38,6 +38,7 @@
                          class="w3-input w3-border" type="text" placeholder="Address"></form:input></div>
         <div><form:errors path="customerForm.address" class="error-message"/></div>
         <br>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button value="Submit" type="submit" class="w3-btn w3-padding-large w3-red w3-margin-bottom">Submit</button>
         <button value="Reset" type="reset" class="w3-btn w3-padding-large w3-red w3-margin-bottom">Reset</button>
 

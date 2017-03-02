@@ -48,18 +48,14 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td><img width="160" height="120"
-                                             src="${pageContext.request.contextPath}/productImage?code=${cartLineInfo.productInfo.code}"
-                                             alt=""></td>
+                                    <td>
+                                        <img width="160" height="120" src="${pageContext.request.contextPath}/productImage?code=${cartLineInfo.productInfo.code}" alt=""></td>
                                     <td>
                                         <h4>Name: ${cartLineInfo.productInfo.name}</h4>
-                                        <p><form:hidden
-                                                path="cartForm.cartLines[${varStatus.index}].productInfo.code"/></p>
+                                        <p><form:hidden path="cartForm.cartLines[${varStatus.index}].productInfo.code"/></p>
                                     </td>
-                                    <td><fmt:formatNumber value="${cartLineInfo.productInfo.price}"
-                                                          type="currency"/></td>
-                                    <td><form:input
-                                            path="cartForm.cartLines[${varStatus.index}].quantity"></form:input></td>
+                                    <td><fmt:formatNumber value="${cartLineInfo.productInfo.price}" type="currency"/></td>
+                                    <td><form:input path="cartForm.cartLines[${varStatus.index}].quantity"></form:input></td>
                                     <td><fmt:formatNumber value="${cartLineInfo.amount}" type="currency"/></td>
                                     <td>
                                         <a href="${pageContext.request.contextPath}/shoppingCartRemoveProduct?code=${cartLineInfo.productInfo.code}">
@@ -74,13 +70,13 @@
                                
                     <div style="clear: both"></div>
                                <input class="btn btn-primary" type="submit" value="Update Quantity"/>
-                               <a class="navi-item"
-                                  href="${pageContext.request.contextPath}/shoppingCartCustomer"><input type="button"
-                                                                                                        class="btn btn-success"
-                                                                                                        value="Enter Customer Info"></a>
-                               <a class="navi-item" href="${pageContext.request.contextPath}/"><input type="button"
-                                                                                                      class="btn btn-info"
-                                                                                                      value="Continue Buy"></a>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                               <a class="navi-item" href="${pageContext.request.contextPath}/shoppingCartCustomer">
+                                    <input type="button" class="btn btn-success" value="Enter Customer Info">
+                                </a>
+                               <a class="navi-item" href="${pageContext.request.contextPath}/">
+                                    <input type="button" class="btn btn-info" value="Continue Buy">
+                                </a>
                     </div>
                 </div>
             </div>

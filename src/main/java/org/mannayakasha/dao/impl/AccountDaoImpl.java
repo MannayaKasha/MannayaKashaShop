@@ -34,7 +34,7 @@ public class AccountDaoImpl implements AccountDao {
         Session session = sessionFactory.getCurrentSession();
         Criteria crit = session.createCriteria(Account.class);
         crit.add(Restrictions.eq("userName", userName));
-        logger.info("Account successfully found.)");
+        logger.info("Account successfully found.");
         return (Account) crit.uniqueResult();
     }
 }

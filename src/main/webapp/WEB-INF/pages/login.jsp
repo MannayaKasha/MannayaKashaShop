@@ -26,6 +26,7 @@
         <div><input style="width: 200px; margin: auto" name="password" class="w3-input w3-border" type="password"
                     placeholder="Password"></div>
         <br>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button value="Login" type="submit" class="w3-btn w3-padding-large w3-red w3-margin-bottom">Log in</button>
         <button value="Reset" type="reset" class="w3-btn w3-padding-large w3-red w3-margin-bottom">Reset</button>
     </form>

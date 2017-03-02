@@ -60,6 +60,7 @@
                 <br>
                       <!-- Send/Save -->
                       <input type="submit" value="Send" class="btn btn-success"/>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                   
             </form>
         </div>

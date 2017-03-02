@@ -1,8 +1,8 @@
 CREATE TABLE Accounts (
-  User_Name VARCHAR(20) NOT NULL,
+  User_Name VARCHAR(30) NOT NULL,
   Active    BIT         NOT NULL,
-  Password  VARCHAR(20) NOT NULL,
-  User_Role VARCHAR(20) NOT NULL,
+  Password  VARCHAR(255) NOT NULL,
+  User_Role VARCHAR(30) NOT NULL,
   PRIMARY KEY (User_Name)
 )
   ENGINE = INNODB
