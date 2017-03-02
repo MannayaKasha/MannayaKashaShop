@@ -2,6 +2,7 @@ Localization
 Registration
 ServiceFactory
 Add methods in Service and Dao
+All entities extends abstract Entity
 
 Rework authentication
 
